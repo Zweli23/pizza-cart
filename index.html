@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Saves</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body>
+
+    <div class="pizzaz"
+        x-data="{small:0, medium:0, large:0, Grandtotal:0, get total(){ return (this.small * 40.00 + this.medium * 80.00 + this.large * 150.00 ).toFixed(2)}, GrandTotal:0, checkout: false, paid:''}">
+
+
+
+
+
+        <div class="pizza_saves">
+            <h1>Pizza Saves</h1>
+            <h2>Pizza orders</h2>
+        </div>
+
+        <div class="Shopping_cart">
+            <div class="Shopping cart">
+                <h1>Shopping cart</h1>
+
+                <div class="pizzaz">
+                    <div class="Shopping_cart" x-show="small != 0 || medium != 0 || large != 0">
+
+                        <template x-if="small > 0">
+                            <div class="small-cart">
+                                Small:
+                                <template x-if="!checkout">
+                                    <button class="Shopping_cart" @click="small++">+</button> </template><span
+                                    x-text="small"></span><template x-if="!checkout"><button class="Shopping_cart"
+                                        @click="small--">-</button></template>
+                                <span>Price: R<span x-text="(small * 40.00).toFixed(2)"></span></span>
+                            </div>
+                        </template>
+
+                        <template x-if="medium > 0">
+                            <div class="medium-cart">
+                                medium:
+                                <template x-if="!checkout">
+                                    <button class="Shopping_cart" @click="medium++">+</button> </template><span
+                                    x-text="medium"></span><template x-if="!checkout"><button class="Shopping_cart"
+                                        @click="medium--">-</button></template>
+                                <span>Price: R<span x-text="(medium * 80.00).toFixed(2)"></span></span>
+                            </div>
+                        </template>
+
+                        <template x-if="large > 0">
+                            <div class="large-cart">
+                                Large:
+                                <template x-if="!checkout">
+                                    <button class="Shopping_cart" @click="large++">+</button> </template><span
+                                    x-text="large"></span><template x-if="!checkout"><button class="Shopping_cart"
+                                        @click="large--">-</button></template>
+                                <span>Price: R<span x-text="(large * 150.00).toFixed(2)"></span></span>
+                            </div>
+                            
+                        </template>
+
+                        <span> <b>Grand total: R</b><span class="Shopping_cart"
+                            x-text="((small * 40.00) + (medium * 80.00) + (large * 150.00)).toFixed(2)"></span>
+                    </span>
+
+                        <!-- <template x-if="!checkout"
+        > <span>Grand total: R<span x-text="(large * 150.00).toFixed(2)"></span></span></template> -->
+
+                        <template x-if="!checkout">
+                            <button class="Shopping_cart" @click="checkout=!checkout">Checkout</button>
+                        </template>
+                        <template x-if="checkout">
+                            <label>Amount received from customer: R<input 
+                                type="number" 
+                                min="0" 
+                                step="0.00"
+                                    x-model="paid" /></label>
+                        </template>
+                        <template x-if="paid == total && checkout">
+                            <!-- <br> -->
+                            <span>
+                                <div style="color: rgb(15, 15, 15)">Enjoy your pizzas!</div>
+                                <button class="Mdesign AW Bdesign" @click="small=0; medium=0; large=0; checkout=false;">
+                                    Complete Order
+                                </button>
+                            </span>
+                        </template>
+                        <template x-if="(parseInt(paid) < total && paid != total && checkout)">
+                            <!-- <br> -->
+                            <span>
+                                <div style="border: 1px solid rgb(204, 3, 3); color: #e70909;">
+                                    <h2><b>This is not enough money</b></h2>
+
+                                </div>
+                                <button class="Shopping_cart" @click="small=0; medium=0; large=0; checkout=false;">
+                                    <div style="color: #f10a0a;">
+
+                                    </div>
+                                    Exit-Cart
+                                </button>
+                            </span>
+                        </template>
+                        <template x-if="parseInt(paid) > total && checkout">
+                            <span>
+                                <div style="color: rgb(15, 15, 15)">
+                                    <br>
+
+                                    <b>Enjoy your pizza, Here's your change: R</b><span
+                                        x-text="(parseInt(paid) - total).toFixed(2)"></span>
+                                </div>
+                                <button class="Shopping_cart"
+                                    @click="small=0; medium=0; large=0; checkout=false; paid=''">
+                                    Complete the Order
+                                </button>
+                            </span>
+                        </template>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="pizzas">
+            <div class="large_pizza">
+                <h2>Large Pizza</h2>
+                <img src="pizza-dd.png" width="150">
+                <h3>R150.00</h3>
+
+                <div x-data="{Buy}">
+                    <div class="Buy" x-text="Buy"></div>
+                    <div>
+                        <button class="Mdesign W Bdesin" @click="large++">BUY</button>
+                        <span x-text="count"></span>
+                    </div>
+
+                </div>
+
+                <div>
+                    <div><b>BBQ Chicken:</b> Chicken, mushroom, onion, BBQ sauce, spring onion</div>
+                    <div><b>Four Seasons:</b> Pepperoni, mushroom, olives, green pepper, onion</div>
+                    <div><b>Sweet & Sour Chicken:</b> Chicken, green pepper, pineapple, sweet & sour
+                        sauce.</div>
+                </div>
+
+
+
+            </div>
+
+
+            <div class="medium_pizza">
+                <h2>Medium Pizza</h2>
+                <img src="https://www.simplyrecipes.com/thmb/I4razizFmeF8ua2jwuD0Pq4XpP8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2019__09__easy-pepperoni-pizza-lead-4-82c60893fcad4ade906a8a9f59b8da9d.jpg"
+                    width="100">
+                <h3>R80.00</h3>
+
+                <div x-data="{Buy}">
+                    <div class="Buy" x-text="Buy"></div>
+                    <div>
+                        <button class="Mdesign W Bdesign" @click="medium++">BUY</button>
+                        <span x-text="count"></span>
+                    </div>
+
+                </div>
+
+                <div>
+                    <div><b>Chicken & Mushroom:</b> Chicken, mushroom, diced tomato, onion, Debonairs
+                        sauce.</div>
+                    <div><b>Mexican Fiesta:</b> Ground beef, jalapeño, green pepper, onion, Mexican
+                        sauce.</div>
+                    <div><b>Garlic Meaty Supreme:</b> Garlic spread base, pepperoni, ham, bacon,
+                        ground beef.</div>
+                </div>
+
+            </div>
+
+            <div class="small_pizza">
+                <h2>Small Pizza</h2>
+                <img src="pizza-dd.png" width="70">
+                <h3>R40.00</h3>
+
+                <div x-data="{Buy}">
+                    <div class="Buy" x-text="Buy"></div>
+                    <div>
+                        <button class="Mdesign W Bdesign" @click="small++">BUY</button>
+                        <span x-text="count"></span>
+                    </div>
+
+                </div>
+
+                <div>
+                    <div><b>Sweet & Sour Rib:</b> Spare rib, sweet & sour sauce</div>
+                    <div><b>Something Meaty:</b> Ham, pepperoni, bacon, ground beef, BBQ sauce</div>
+                    <div><b>Tikka Chicken:</b> Chicken, mushroom, sweet bell pepper, onion, Tikka sauce, spring onion.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="contact_us">
+
+
+            <div class="contact">
+                <h2>Contact details</h2>
+                Contact us at: (021)-541-1000
+                <div>
+                    twitter
+                </div>
+                <div>
+                    /fb
+                </div>
+                <div>
+                    /insta
+                </div>
+                <div>
+                    @pizzasave
+                </div>
+            </div>
+
+
+            <div class="adress">
+                <div>
+                    Pizza Plaza
+                </div>
+                <div>
+                    Dough Road
+                </div>
+                <div>
+                    Base Town
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</body>
+
+</html>

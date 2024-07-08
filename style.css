@@ -1,0 +1,74 @@
+body {
+    background-color: rgb(71, 77, 60);
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+    width: 100;
+    display: inline-block;
+}
+.pizza_saves {
+    text-align: center;
+}
+
+.Shopping_cart {
+    background-color: rgb(146, 214, 214);
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+    text-align: center;
+}
+
+.large_pizza {
+    background-color: rgb(211, 83, 83);
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+    text-align: center;
+}
+
+.medium_pizza {
+    background-color: rgb(121, 80, 80);
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+    text-align: center;
+}
+
+.small_pizza {
+    background-color: rgb(155, 155, 103);
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+    text-align: center;
+}
+
+.contact_us {
+    background-color: rgb(146, 214, 214);
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+    display: flex;
+}
+
+.adress {
+    text-align: right;
+    background-color: rgb(146, 214, 214);
+    width: 40%;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.contact {
+    background-color: rgb(146, 214, 214);
+    width: 60%;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+@media (min-width: 960px) {
+    .pizzas{
+        display: flex;
+    }
+}
